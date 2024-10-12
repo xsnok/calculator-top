@@ -1,0 +1,20 @@
+
+
+button {
+    width: 40px;
+    height: 40px;
+}
+
+.calculator {
+    display: flex;
+    height: 100vb;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-width: calc((40px + 5px) * 4);
+}
