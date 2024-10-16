@@ -27,28 +27,24 @@ function functionEventListener() {
 
     for (let i = 0; i < buttonsFunction.length; i++) {
         buttonsFunction[i].addEventListener ('click', function() {
-            if (operationStart == false) {
+            //Checks if calc was blank blank before.
+            if (!operationStart && !isNaN(parseInt(output.textContent))) {
                 num1 = output.textContent;
-            } 
-            else if (num1 != output.textContent && Number.isNaN(parseInt(output.textContent)) == false) {
-                num1 = output.textContent;
-            }
-            else if (Number.isNaN(parseInt(output.textContent))) {
-                operator = output.textContent;
-            }
-            else if (num1 != '' && operator != '' && parseInt(output.textContent) == true) {
-                console.log("special");
-                num1 = operate(num1, num2);
-                num2 = '';
+                output.textContent = buttonsFunction[i].textContent;
                 operator = buttonsFunction[i].textContent;
+                operationStart = true;
             }
-            else if (operateStart){
-                num2 = output.textContent;
+            //Checks if the operation has started and if the text on the screen is a num.
+            //This is for num2
+            else if (operationStart && !isNaN(parseInt(output.textContent))) {
+                num2 = output.textContent
+                num1 = operate();
+                num2 = '';
+                output.textContent = buttonsFunction[i].textContent
+                operator = buttonsFunction[i].textContent;
+                operationStart = true;
             }
-            operator = buttonsFunction[i].textContent;
-            output.textContent = buttonsFunction[i].textContent;
-            operationStart = true;
-            console.log(`${num1} ${operator} ${num2}`);
+            console.log(`${num1} ${operator} ${num2}`)
         });
     }
 }
